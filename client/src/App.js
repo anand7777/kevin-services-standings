@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import axios from 'axios';
-import dbCall from '../../config/key';
+// import dbCall from '../../config/key';
 
 import Standings from './components/Standings';
 import FullStandings from './components/FullStandings';

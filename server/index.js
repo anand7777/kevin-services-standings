@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const db = require('../database/index.js');
+const configuration = require('../database/knexfile.js');
+const db = require('knex')(configuration);
 
 const app = express();
 
@@ -12,13 +13,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.get('/espn/teamstandings', (req, res) => {
-  db.find({}, (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(data);
-    }
-  });
+  db('standings').select().limit(10)
+    .then((standings) => {
+      res.status(200).json(standings);
+    })
+    .catch((error) => {
+      res.status(500).json({ error });
+    });
 });
 
 const port = process.env.PORT || 4000;
