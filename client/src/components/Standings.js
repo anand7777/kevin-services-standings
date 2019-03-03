@@ -4,7 +4,7 @@ import React from 'react';
 
 const Standings = (props) => {
   const { teams, handleClick } = props;
-  const nfcWestTeams = teams.filter(team => team.division === 'NFC WEST').sort((a, b) => b.wins - a.wins);
+  const nfcWestTeams = teams.filter(team => team.division === 'NFC West').sort((a, b) => b.wins - a.wins);
 
   return (
     <div className="col-md">
