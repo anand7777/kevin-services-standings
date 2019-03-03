@@ -45,12 +45,6 @@ app.post('/espn/post/standings', (req, res) => {
     });
 });
 
-const port = process.env.PORT || 4000;
-
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
-});
-
 app.put('/espn/standings/update/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const team_name = (req.body.team_name);
@@ -80,3 +74,11 @@ app.delete('/espn/standings/delete/:id', (req, res) => {
       res.status(500).json({ error });
     });
 });
+
+const port = process.env.PORT || 4000;
+
+app.listen(port, () => {
+  console.log(`listening on port ${port}`);
+});
+
+
